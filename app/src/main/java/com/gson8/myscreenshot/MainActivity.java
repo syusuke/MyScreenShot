@@ -25,6 +25,8 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.gson8.myscreenshot.fileselector.config.FileConfig;
+import com.gson8.myscreenshot.fileselector.dialog.FileDialog;
 import com.gson8.myscreenshot.video.DpiBean;
 import com.gson8.myscreenshot.video.MyShoter;
 import com.gson8.myscreenshot.video.SpinnerAdapter;
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private Button mBtnShotStart;
-
+    private Button mBtnOp;
 
     private Spinner mDpiSizeSp;
     private SpinnerAdapter mDpiAdapter;
@@ -104,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initView() {
 
         mBtnShotStart = (Button) findViewById(R.id.id_shot_video);
+        mBtnOp = (Button) findViewById(R.id.id_video_op);
         mDpiSizeSp = (Spinner) findViewById(R.id.id_sp_select_dpi);
         mBitRateSp = (Spinner) findViewById(R.id.id_sp_select_mbps);
         mFpsSp = (Spinner) findViewById(R.id.id_sp_select_fps);
@@ -137,6 +140,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initEvent() {
         mBtnShotStart.setOnClickListener(this);
+        mBtnOp.setOnClickListener(this);
         mShowTouchSwitch.setOnCheckedChangeListener(this);
 
 
@@ -295,7 +299,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.id_shot_video:
                 shot();
                 break;
+            case R.id.id_video_op:
+                opTheVideo();
+                break;
         }
+    }
+
+    private void opTheVideo() {
+
+        FileConfig config = new FileConfig();
+
+        FileDialog fileDialog = new FileDialog(this, config);
+        fileDialog.showDialog();
     }
 
 

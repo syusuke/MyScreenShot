@@ -100,6 +100,13 @@
             android:layout_weight="1"
             android:text="开始录制屏幕"/>
 
+        <Button
+            android:id="@+id/id_video_op"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="OP"/>
+
     </LinearLayout>
 
 </ScrollView>
